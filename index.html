@@ -3,898 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCG Digital - User Research Hub</title>
-    <!-- Premium Fonts: Plus Jakarta Sans for tech-vibe and Prompt for crisp Thai typography -->
+    <title>SCG Digital - CES 2026 Innovation Hub</title>
+    <!-- Futuristic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Prompt:wght@300;400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* SCG Digital Brand CI - Updated according to scgdigital.tech modern tech-forward direction */
+        /* CES 2026 Futuristic Theme - Neo-Glassmorphism & Cyber-Minimalism */
         :root {
-            --scg-red: #E1251B;
-            --scg-red-hover: #B81A12;
-            --tech-black: #0B0F19;
-            --tech-dark: #111827;
-            --slate-gray: #4B5563;
-            --light-bg: #F8FAFC;
-            --card-bg: #FFFFFF;
-            --border-color: #E2E8F0;
-            --text-main: #0F172A;
-            --text-muted: #64748B;
-            --accent-glow: rgba(221, 37, 27, 0.08);
+            --bg-deep: #030305;
+            --bg-grid: #0A0A10;
+            --scg-red-neon: #FF2A2A;
+            --scg-red-dark: #990F0F;
+            --cyber-cyan: #00E5FF;
+            --neon-purple: #B200FF;
             
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            
+            --text-pure: #FFFFFF;
+            --text-dim: #A0A0B0;
+            
+            --font-en: 'Outfit', sans-serif;
             --font-th: 'Prompt', sans-serif;
-            --font-en: 'Plus Jakarta Sans', sans-serif;
-            --transition-premium: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-data: 'Space Grotesk', sans-serif;
+            
+            --transition-expo: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: var(--font-th);
-            background-color: var(--light-bg);
-            color: var(--text-main);
-            line-height: 1.7;
+            background-color: var(--bg-deep);
+            color: var(--text-pure);
+            line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
+        /* CES 2026 Animated Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            perspective: 1000px;
         }
 
-        /* Buttons & Interactions */
+        /* Glowing Ambient Orbs */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, var(--scg-red-dark) 0%, transparent 70%); }
+        .orb-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%); animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 10%) scale(1.1); }
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+        /* Expo-style Typography */
+        .expo-gradient-text {
+            background: linear-gradient(90deg, #FFFFFF 0%, var(--text-dim) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .expo-neon-text {
+            color: var(--scg-red-neon);
+            text-shadow: 0 0 20px rgba(255, 42, 42, 0.5);
+        }
+
+        /* Buttons (CES Style) */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            border-radius: 999px; /* Modern Pill shape according to new CI */
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: var(--transition-premium);
-            border: none;
-            text-decoration: none;
-            gap: 8px;
-            letter-spacing: -0.2px;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 32px; border-radius: 4px;
+            font-family: var(--font-en); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; transition: var(--transition-expo); border: none; text-decoration: none; gap: 10px;
+            position: relative; overflow: hidden;
         }
 
         .btn-primary {
-            background-color: var(--scg-red);
-            color: white;
-            box-shadow: 0 4px 14px rgba(225, 37, 27, 0.2);
+            background: rgba(255, 42, 42, 0.1);
+            color: var(--scg-red-neon);
+            border: 1px solid var(--scg-red-neon);
+            box-shadow: 0 0 15px rgba(255, 42, 42, 0.2) inset, 0 0 20px rgba(255, 42, 42, 0.2);
         }
 
         .btn-primary:hover {
-            background-color: var(--scg-red-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(225, 37, 27, 0.3);
+            background: var(--scg-red-neon); color: #000;
+            box-shadow: 0 0 30px rgba(255, 42, 42, 0.6);
         }
 
         .btn-secondary {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
+            background: var(--glass-bg); color: var(--text-pure);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
-            background-color: var(--text-main);
-            color: white;
-            border-color: var(--text-main);
-            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.1); border-color: var(--text-pure);
         }
 
-        .btn-back-link {
-            background-color: transparent;
-            color: var(--text-muted);
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition-premium);
-        }
-        
-        .btn-back-link:hover {
-            color: var(--scg-red);
-            transform: translateX(-4px);
-        }
-
-        .btn-like {
-            background-color: #FFF5F5;
-            color: var(--scg-red);
-            border: 1px solid rgba(225, 37, 27, 0.1);
-        }
-
-        .btn-like:hover {
-            background-color: rgba(225, 37, 27, 0.1);
-            transform: scale(1.03);
-        }
-
-        .btn-like.liked {
-            background-color: var(--scg-red);
-            color: white;
-            border-color: var(--scg-red);
-        }
-
-        /* 1. Landing Welcome Screen (Premium Corporate Dark Mode Theme) */
+        /* 1. Keynote Welcome Screen */
         #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: var(--tech-black);
-            background-image: 
-                radial-gradient(circle at 80% 20%, rgba(221, 37, 27, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(15, 23, 42, 0.8) 0%, transparent 50%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1000; transition: opacity 0.8s ease, visibility 0.8s ease;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-deep) 100%);
+            backdrop-filter: blur(5px);
         }
 
-        #welcome-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
+        #welcome-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        .welcome-content {
-            text-align: center;
-            max-width: 720px;
-            padding: 40px 24px;
-            animation: fadeInBlur 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .welcome-tagline {
-            font-family: var(--font-en);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            color: var(--scg-red);
-            text-transform: uppercase;
-            margin-bottom: 20px;
+        .keynote-badge {
+            font-family: var(--font-data); color: var(--scg-red-neon); font-size: 14px; letter-spacing: 4px;
+            padding: 6px 16px; border: 1px solid rgba(255, 42, 42, 0.3); border-radius: 100px;
+            margin-bottom: 30px; background: rgba(255, 42, 42, 0.05); text-transform: uppercase;
         }
 
         .welcome-title {
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 1.25;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
+            font-family: var(--font-en); font-size: 5vw; font-weight: 900; line-height: 1.1; text-align: center;
+            letter-spacing: -2px; margin-bottom: 30px; text-transform: uppercase;
         }
 
         .welcome-subtitle {
-            font-size: 16px;
-            font-weight: 300;
-            color: #94A3B8;
-            margin-bottom: 44px;
-            line-height: 1.8;
+            font-size: 18px; color: var(--text-dim); max-width: 800px; text-align: center; margin-bottom: 50px; font-weight: 300;
         }
 
-        /* 2. Main Blog Platform Layout */
+        /* 2. Main Expo Dashboard */
         #main-content {
-            opacity: 0;
-            display: none;
-            transition: opacity 0.5s ease;
-            padding-top: 100px;
-            padding-bottom: 100px;
+            opacity: 0; display: none; transition: opacity 0.8s ease; padding-top: 120px; padding-bottom: 100px;
         }
+        #main-content.visible { opacity: 1; display: block; }
 
-        #main-content.visible {
-            opacity: 1;
-            display: block;
-        }
-
-        /* Fixed Navigation Bar */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            z-index: 100;
-            height: 80px;
-            display: flex;
-            align-items: center;
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+            background: rgba(3, 3, 5, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border); z-index: 100; display: flex; align-items: center;
         }
 
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
+        .brand-logo { font-family: var(--font-en); font-size: 20px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+        .brand-logo span { color: var(--scg-red-neon); font-weight: 300; }
+
+        /* Data-Driven Research Cards Grid */
+        .section-header { margin-bottom: 60px; text-align: center; }
+        .section-title { font-family: var(--font-en); font-size: 42px; font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
+
+        .expo-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 40px; margin-bottom: 80px;
         }
 
-        .nav-left-group {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .brand-divider {
-            width: 1px;
-            height: 24px;
-            background-color: var(--border-color);
-        }
-
-        .brand-logo {
-            font-family: var(--font-en);
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--tech-black);
-            letter-spacing: -0.3px;
-        }
-
-        .brand-logo span {
-            color: var(--scg-red);
-        }
-
-        /* Platform Page Content Titles */
-        .section-header {
-            margin-bottom: 48px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 12px;
-        }
-
-        .section-desc {
-            font-size: 15px;
-            color: var(--text-muted);
-        }
-
-        /* UX Writing Optimized Cards Grid */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
-            gap: 32px;
-            margin-bottom: 80px;
-        }
-
-        @media (max-width: 768px) {
-            .research-grid { grid-template-columns: 1fr; }
-        }
-
-        .research-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition-premium);
-            position: relative;
+        .expo-card {
+            background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border); border-radius: 16px; padding: 40px;
+            position: relative; display: flex; flex-direction: column; transition: var(--transition-expo);
             overflow: hidden;
         }
 
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background-color: var(--scg-red);
-            transition: var(--transition-premium);
+        /* Holographic Hover Effect */
+        .expo-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(255, 42, 42, 0.1) 25%, transparent 50%);
+            animation: rotate 10s linear infinite; opacity: 0; transition: opacity 0.5s; z-index: -1;
         }
 
-        .research-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
-            border-color: rgba(225, 37, 27, 0.2);
-        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
-        .research-card:hover::before {
-            height: 100%;
+        .expo-card:hover {
+            transform: translateY(-10px) scale(1.02); border-color: rgba(255, 42, 42, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 42, 42, 0.1);
         }
+        .expo-card:hover::before { opacity: 1; }
 
-        .card-tag {
-            display: inline-flex;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--scg-red);
-            background-color: var(--accent-glow);
-            padding: 6px 14px;
-            border-radius: 99px;
-            margin-bottom: 24px;
+        .card-hud-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        
+        .tech-badge {
+            font-family: var(--font-data); font-size: 11px; font-weight: 700; letter-spacing: 2px;
+            color: var(--cyber-cyan); text-transform: uppercase;
+            display: flex; align-items: center; gap: 8px;
         }
+        .tech-badge::before { content: ''; width: 6px; height: 6px; background: var(--cyber-cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyber-cyan); }
 
-        .card-title {
-            font-size: 22px;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 14px;
-            cursor: pointer;
-            transition: var(--transition-premium);
+        .card-number { font-family: var(--font-data); font-size: 48px; font-weight: 900; color: rgba(255, 255, 255, 0.05); line-height: 1; }
+
+        .card-title { font-size: 24px; font-weight: 600; margin-bottom: 16px; line-height: 1.4; }
+        .card-excerpt { font-size: 15px; color: var(--text-dim); margin-bottom: 30px; flex-grow: 1; font-weight: 300; }
+
+        /* Data Metrics Display inside Card */
+        .data-metrics {
+            display: flex; gap: 24px; margin-bottom: 30px; padding: 16px;
+            background: rgba(0, 0, 0, 0.3); border-radius: 8px; border-left: 2px solid var(--scg-red-neon);
         }
+        .metric-item { display: flex; flex-direction: column; }
+        .metric-value { font-family: var(--font-data); font-size: 24px; font-weight: 700; color: var(--text-pure); }
+        .metric-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
-        .card-title:hover {
-            color: var(--scg-red);
+        .card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+        .btn-icon { padding: 12px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-pure); cursor: pointer; transition: var(--transition-expo); display: flex; align-items: center; gap: 8px; font-family: var(--font-data); font-size: 12px;}
+        .btn-icon:hover { background: rgba(255, 42, 42, 0.2); border-color: var(--scg-red-neon); color: var(--scg-red-neon); }
+        .btn-icon.liked { background: var(--scg-red-neon); color: #000; box-shadow: 0 0 15px var(--scg-red-neon); }
+
+        /* Survey Section - Terminal Style */
+        .terminal-survey {
+            background: #0A0A10; border: 1px solid #1F1F2E; border-radius: 12px; padding: 50px;
+            font-family: var(--font-data); position: relative; overflow: hidden;
         }
-
-        .card-excerpt {
-            font-size: 14px;
-            color: var(--slate-gray);
-            margin-bottom: 32px;
-            flex-grow: 1;
+        .terminal-header {
+            display: flex; gap: 8px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #1F1F2E;
         }
+        .term-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .term-dot.r { background: #FF5F56; } .term-dot.y { background: #FFBD2E; } .term-dot.g { background: #27C93F; }
 
-        .card-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #F1F5F9;
-            padding-top: 24px;
+        .survey-q { font-size: 16px; color: var(--cyber-cyan); margin-bottom: 20px; font-weight: 500; font-family: var(--font-th); }
+        
+        .cyber-radio {
+            display: block; padding: 16px 20px; margin-bottom: 12px; border: 1px solid #1F1F2E; border-radius: 4px;
+            cursor: pointer; transition: var(--transition-expo); font-family: var(--font-th); font-size: 14px;
+            background: rgba(255, 255, 255, 0.02);
         }
+        .cyber-radio:hover { border-color: var(--cyber-cyan); background: rgba(0, 229, 255, 0.05); }
+        .cyber-radio input { display: none; }
+        .cyber-radio input:checked + span { color: var(--cyber-cyan); font-weight: 700; }
+        .cyber-radio input:checked + span::before { content: '> '; color: var(--cyber-cyan); }
 
-        .action-group {
-            display: flex;
-            gap: 12px;
+        .cyber-input {
+            width: 100%; background: #050508; border: 1px solid #1F1F2E; color: var(--cyber-cyan);
+            padding: 16px; border-radius: 4px; font-family: var(--font-th); font-size: 14px; margin-bottom: 30px;
+            transition: var(--transition-expo); resize: none;
         }
+        .cyber-input:focus { outline: none; border-color: var(--cyber-cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
 
-        /* 3. Premium Interactive Survey Layout */
-        .survey-section {
-            background-color: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 48px;
-            margin-top: 80px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-        }
-
-        .survey-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 32px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 14px;
-            color: var(--text-main);
-        }
-
-        /* Modernized Elegant Radio Inputs */
-        .radio-option {
-            display: block;
-            position: relative;
-            padding: 14px 16px 14px 44px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--slate-gray);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            transition: var(--transition-premium);
-        }
-
-        .radio-option:hover {
-            border-color: var(--scg-red);
-            background-color: var(--accent-glow);
-            color: var(--text-main);
-        }
-
-        .radio-option input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .checkmark {
-            position: absolute;
-            top: 15px;
-            left: 16px;
-            height: 18px;
-            width: 18px;
-            background-color: #FFF;
-            border: 1px solid #CBD5E1;
-            border-radius: 50%;
-            transition: var(--transition-premium);
-        }
-
-        .radio-option input:checked ~ .checkmark {
-            background-color: var(--scg-red);
-            border-color: var(--scg-red);
-            box-shadow: 0 0 0 4px rgba(225, 37, 27, 0.15);
-        }
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        .radio-option input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        .radio-option .checkmark:after {
-            top: 5px;
-            left: 5px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: white;
-        }
-
-        /* Star Rating Micro-interaction Component */
-        .rating-stars {
-            display: flex;
-            gap: 12px;
-        }
-
-        .star {
-            font-size: 32px;
-            cursor: pointer;
-            color: #E2E8F0;
-            transition: var(--transition-premium);
-        }
-
-        .star:hover, .star.selected {
-            color: #F59E0B;
-            transform: scale(1.15);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            font-family: var(--font-th);
-            font-size: 14px;
-            color: var(--text-main);
-            background-color: var(--light-bg);
-            transition: var(--transition-premium);
-            resize: vertical;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--scg-red);
-            background-color: #FFF;
-            box-shadow: 0 0 0 4px rgba(225, 37, 27, 0.1);
-        }
-
-        /* 4. PDF Full Screen Preview Modal Overlay */
+        /* Modal Overlay for PDF */
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(11, 15, 25, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-premium);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: var(--transition-expo);
         }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .modal.active { opacity: 1; visibility: visible; }
+        
         .modal-container {
-            background-color: white;
-            width: 92%;
-            max-width: 1100px;
-            height: 88vh;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
-            transform: scale(0.96);
-            transition: var(--transition-premium);
+            width: 95%; max-width: 1200px; height: 90vh; background: #0A0A10; border: 1px solid var(--scg-red-neon);
+            border-radius: 8px; display: flex; flex-direction: column;
+            box-shadow: 0 0 50px rgba(255, 42, 42, 0.15); transform: scale(0.95); transition: var(--transition-expo);
         }
-
-        .modal.active .modal-container {
-            transform: scale(1);
-        }
+        .modal.active .modal-container { transform: scale(1); }
 
         .modal-header {
-            padding: 20px 28px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #FFF;
+            padding: 20px 30px; border-bottom: 1px solid #1F1F2E; display: flex; justify-content: space-between; align-items: center;
+            font-family: var(--font-data); color: var(--cyber-cyan); text-transform: uppercase; letter-spacing: 2px;
         }
-
-        .modal-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
         .modal-close {
-            background-color: #F1F5F9;
-            border: none;
-            font-size: 22px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            color: var(--slate-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-premium);
+            background: transparent; border: none; color: var(--text-pure); font-size: 28px; cursor: pointer; transition: 0.3s;
         }
-
-        .modal-close:hover {
-            background-color: var(--scg-red);
-            color: white;
-        }
-
-        .modal-body {
-            flex-grow: 1;
-            background-color: #475569;
-        }
-
-        .pdf-viewer {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Toast Systems */
-        .toast {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background-color: var(--tech-black);
-            color: white;
-            padding: 16px 28px;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-            font-size: 14px;
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition-premium);
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast-icon { color: #10B981; font-weight: bold; }
-
-        @keyframes fadeInBlur {
-            from { opacity: 0; filter: blur(8px); transform: scale(0.98); }
-            to { opacity: 1; filter: blur(0); transform: scale(1); }
-        }
+        .modal-close:hover { color: var(--scg-red-neon); transform: rotate(90deg); }
+        .modal-body { flex-grow: 1; background: #111; }
+        .pdf-viewer { width: 100%; height: 100%; border: none; }
+        
+        @media (max-width: 768px) { .expo-grid { grid-template-columns: 1fr; } .welcome-title { font-size: 36px; } }
     </style>
 </head>
 <body>
 
-    <!-- 1. PREMIUM LANDING / WELCOME PAGE -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <!-- 1. KEYNOTE WELCOME SCREEN -->
     <div id="welcome-screen">
-        <div class="welcome-content">
-            <div class="welcome-tagline">SCG Digital Hub</div>
-            <h1 class="welcome-title">Unlock Human Insights.<br>Drive Digital Innovation.</h1>
-            <p class="welcome-subtitle">
-                ยินดีต้อนรับสู่คลังข้อมูลงานวิจัยเชิงลึก (User Research Hub) โดยทีม Design แห่ง SCG Digital Office 
-                พื้นที่รวบรวมข้อมูลพฤติกรรมผู้ใช้ บทวิเคราะห์กลยุทธ์ และเอกสารสำคัญ เพื่อเป็นรากฐานในการขับเคลื่อนทุกผลิตภัณฑ์ดิจิทัลของเราให้ตอบโจทย์ตลาดได้อย่างแม่นยำ
-            </p>
-            <button class="btn btn-primary" onclick="enterPlatform()">
-                สำรวจคลังผลงานวิจัย
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-        </div>
+        <div class="keynote-badge">CES 2026 Innovation Showcase</div>
+        <h1 class="welcome-title"><span class="expo-gradient-text">The Future of</span><br>Human-Centric Insights</h1>
+        <p class="welcome-subtitle">
+            ก้าวสู่มิติใหม่ของงานวิจัยการออกแบบ (Design Research) สัมผัสประสบการณ์ข้อมูลเชิงลึกที่ถูกยกระดับด้วย AI, AR และ Data Science เพื่อกำหนดทิศทางนวัตกรรมดิจิทัลของ SCG ในทศวรรษหน้า
+        </p>
+        <button class="btn btn-primary" onclick="enterExpo()">
+            Enter Dashboard 
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
     </div>
 
-    <!-- 2. MAIN HUB INTERFACE CONTENTS -->
+    <!-- 2. MAIN EXPO DASHBOARD -->
     <div id="main-content">
-        <!-- Navigation Header Area -->
         <header>
-            <div class="container nav-wrapper">
-                <div class="nav-left-group">
-                    <div class="brand-logo"><strong>SCG Digital</strong> <span>• Research</span></div>
-                    <div class="brand-divider"></div>
-                    <!-- NEW: Back button to return back to welcome screen perfectly -->
-                    <button class="btn-back-link" onclick="exitToLanding()">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-                        กลับหน้าแรก
-                    </button>
+            <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 30px;">
+                    <div class="brand-logo">SCG Digital <span>x Research</span></div>
+                    <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 11px;" onclick="exitExpo()">EXIT SYSTEM</button>
                 </div>
-                
-                <a href="mailto:pathoupi@scg.com?subject=Inquiry%20about%20Design%20User%20Research" class="btn btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    ติดต่อเราทีม Research
+                <a href="mailto:pathoupi@scg.com" class="btn btn-secondary" style="padding: 8px 20px; font-size: 11px; border-color: var(--cyber-cyan); color: var(--cyber-cyan);">
+                    CONTACT LAB
                 </a>
             </div>
         </header>
 
-        <!-- Core Main Container Layout -->
         <main class="container">
             <div class="section-header">
-                <h2 class="section-title">Latest Knowledge & Executive Reports</h2>
-                <p class="section-desc">กลั่นกรองพฤติกรรมและ Insight สำคัญจากผู้ใช้งานจริง สู่แนวทางการวางกลยุทธ์ผลิตภัณฑ์ (Product Strategy) ที่จับต้องได้</p>
+                <h2 class="section-title expo-gradient-text">Innovation Reports v26.0</h2>
+                <p style="color: var(--text-dim); font-size: 18px; font-weight: 300;">วิเคราะห์ถอดรหัสพฤติกรรม สู่กลยุทธ์ผลิตภัณฑ์ที่ขับเคลื่อนด้วยข้อมูล (Data-Driven Strategy)</p>
             </div>
 
-            <!-- Optimized Grid Content Cards under premium UX Writing rules -->
-            <div class="research-grid">
+            <!-- EXPO GRID -->
+            <div class="expo-grid">
                 
                 <!-- Card 1: SARA -->
-                <div class="research-card">
-                    <div>
-                        <span class="card-tag">AI Companion & Market Validation</span>
-                        <h3 class="card-title" onclick="openPdf('SARA.pdf', '01 | SARA - Mobile Learning App Report Summary')">01 | SARA: พลิกเครื่องมือสรุปเสียง สู่ AI Learning Companion ของคนรุ่นใหม่</h3>
-                        <p class="card-excerpt">เจาะลึกช่องว่างทางการตลาด (Product-Market Fit Mismatch) จากการวิจัยเชิงคุณภาพร่วมกับกลุ่มนักศึกษา ค้นหาคำตอบว่าทำไมระบบนิเวศการเรียนรู้แบบบูรณาการ จึงมีความสำคัญมากกว่าแค่เครื่องมือสรุปเสียงทั่วไป</p>
+                <div class="expo-card">
+                    <div class="card-hud-top">
+                        <div class="tech-badge">AI Ecosystem</div>
+                        <div class="card-number">01</div>
                     </div>
+                    <h3 class="card-title expo-gradient-text">SARA: AI Learning Companion</h3>
+                    <p class="card-excerpt">วิเคราะห์ Product-Market Fit Mismatch พบว่านวัตกรรมที่แท้จริงไม่ใช่แค่เครื่องมือสรุปเสียง แต่คือ 'ระบบนิเวศการเรียนรู้อัจฉริยะ' ที่เชื่อมต่อบทเรียนและตอบโต้แบบเรียลไทม์</p>
+                    
+                    <div class="data-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">70%<span style="color:var(--scg-red-neon)">+</span></span>
+                            <span class="metric-label">Context Switching Reduced</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">Al</span>
+                            <span class="metric-label">As Accelerator</span>
+                        </div>
+                    </div>
+
                     <div class="card-actions">
-                        <button class="btn btn-like" onclick="handleLike('sara', this)">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            ถูกใจ (<span class="like-count">14</span>)
+                        <button class="btn-icon" onclick="toggleLike('sara', this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span class="like-cnt">1.2K</span>
                         </button>
-                        <div class="action-group">
-                            <button class="btn btn-secondary" onclick="openPdf('SARA.pdf', '01 | SARA - Mobile Learning App Report Summary')">Preview</button>
-                            <a href="SARA.pdf" download class="btn btn-primary">Download PDF</a>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-secondary" onclick="openPdf('SARA.pdf', 'SYSTEM_01: SARA INSIGHTS')">PREVIEW</button>
+                            <a href="SARA.pdf" download class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: RM Worklog -->
-                <div class="research-card">
-                    <div>
-                        <span class="card-tag">Frictionless UX & Employee Engagement</span>
-                        <h3 class="card-title" onclick="openPdf('RM.pdf', '02 | RM Worklog - System Transformation Insights')">02 | RM Worklog: จากระบบบันทึกงานประจำวัน สู่ระบบบริหารเวลาที่พนักงานอยากใช้เอง</h3>
-                        <p class="card-excerpt">ถอดรหัสความเสี่ยงทางธุรกิจเมื่อข้อมูล P&L ขาดความแม่นยำเนื่องจาก Value Disconnect เปลี่ยนมุมมองระบบจากการควบคุมโดยฝ่ายบริหารสู่การส่งมอบคุณค่าและสร้างประสบการณ์กรอกข้อมูลที่ไร้รอยต่อสำหรับบุคลากร</p>
+                <div class="expo-card">
+                    <div class="card-hud-top">
+                        <div class="tech-badge">Enterprise UX</div>
+                        <div class="card-number">02</div>
                     </div>
+                    <h3 class="card-title expo-gradient-text">RM Worklog: Work Intelligence</h3>
+                    <p class="card-excerpt">เปลี่ยนทิศทางระบบจาก 'เครื่องมือจับผิด' เป็น 'เครื่องมือเพิ่มประสิทธิภาพ' ทลายปม Value Disconnect เพื่อลดความเสียหายทางข้อมูลและสร้าง P&L ที่แม่นยำ</p>
+                    
+                    <div class="data-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">14<span style="color:var(--scg-red-neon)"> Days</span></span>
+                            <span class="metric-label">Memory Failure Limit</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Workflow Integration</span>
+                        </div>
+                    </div>
+
                     <div class="card-actions">
-                        <button class="btn btn-like" onclick="handleLike('rm', this)">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            ถูกใจ (<span class="like-count">9</span>)
+                        <button class="btn-icon" onclick="toggleLike('rm', this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span class="like-cnt">850</span>
                         </button>
-                        <div class="action-group">
-                            <button class="btn btn-secondary" onclick="openPdf('RM.pdf', '02 | RM Worklog - System Transformation Insights')">Preview</button>
-                            <a href="RM.pdf" download class="btn btn-primary">Download PDF</a>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-secondary" onclick="openPdf('RM.pdf', 'SYSTEM_02: WORKLOG DATA')">PREVIEW</button>
+                            <a href="RM.pdf" download class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: WeShape -->
-                <div class="research-card">
-                    <div>
-                        <span class="card-tag">Competitive Design & PropTech Solution</span>
-                        <h3 class="card-title" onclick="openPdf('WeShape.pdf', '03 | WeShape - PropTech & Furniture Visualizer Evaluation')">03 | WeShape: ทลายกำแพง Reality Gap ในธุรกิจเฟอร์นิเจอร์ออนไลน์</h3>
-                        <p class="card-excerpt">วิเคราะห์ประสบการณ์การใช้งานเชิงเปรียบเทียบ (Competitive UX Evaluation) ของเครื่องมือแต่งห้องจำลองในตลาด ค้นหาโอกาสสำคัญในการปรับใช้ประโยชน์จาก True-scale AR และพลังของ AI เพื่อเพิ่มอัตรา Conversion</p>
+                <div class="expo-card">
+                    <div class="card-hud-top">
+                        <div class="tech-badge">Spatial Commerce (AR)</div>
+                        <div class="card-number">03</div>
                     </div>
+                    <h3 class="card-title expo-gradient-text">WeShape: Reality Gap Solution</h3>
+                    <p class="card-excerpt">ประเมินประสบการณ์คู่แข่งในตลาด PropTech ค้นพบโอกาสจากการผสาน True-scale AR และ AI-Driven 3D Content เพื่อเปลี่ยนการซื้อเฟอร์นิเจอร์เป็นการซื้อความมั่นใจ</p>
+                    
+                    <div class="data-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">ARKit</span>
+                            <span class="metric-label">True-scale Tech</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">GenAI</span>
+                            <span class="metric-label">3D Model Generation</span>
+                        </div>
+                    </div>
+
                     <div class="card-actions">
-                        <button class="btn btn-like" onclick="handleLike('weshape', this)">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            ถูกใจ (<span class="like-count">18</span>)
+                        <button class="btn-icon" onclick="toggleLike('weshape', this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span class="like-cnt">2.4K</span>
                         </button>
-                        <div class="action-group">
-                            <button class="btn btn-secondary" onclick="openPdf('WeShape.pdf', '03 | WeShape - PropTech & Furniture Visualizer Evaluation')">Preview</button>
-                            <a href="WeShape.pdf" download class="btn btn-primary">Download PDF</a>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-secondary" onclick="openPdf('WeShape.pdf', 'SYSTEM_03: WESHAPE AR')">PREVIEW</button>
+                            <a href="WeShape.pdf" download class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 4: LIV -->
-                <div class="research-card">
-                    <div>
-                        <span class="card-tag">GenAI Touchpoint & Consumer Journey</span>
-                        <h3 class="card-title" onclick="openPdf('LIV.pdf', '04 | LIV - Home LLM Touchpoint Framework')">04 | LIV คิด-สร้าง-อยู่-ซ่อม: ออกแบบมิติใหม่แห่งการเข้าถึงที่อยู่อาศัยด้วย GenAI</h3>
-                        <p class="card-excerpt">ศึกษา Consumer Journey ข้อมูลเรื่องบ้านอันซับซ้อนและกระจัดกระจายสู่กรอบแนวคิดในการวางโครงสร้างระบบ Home LLM ให้เป็น Touchpoint หลักอันทรงคุณค่าและเป็น 'ผู้เชี่ยวชาญที่ผู้บริโภคไว้วางใจสูงสุด'</p>
+                <div class="expo-card">
+                    <div class="card-hud-top">
+                        <div class="tech-badge">GenAI LLM Model</div>
+                        <div class="card-number">04</div>
                     </div>
+                    <h3 class="card-title expo-gradient-text">LIV: Home LLM Architect</h3>
+                    <p class="card-excerpt">รวบรวม Journey การทำบ้านที่กระจัดกระจายสู่ Single Touchpoint เจาะลึกโครงสร้างข้อมูลที่ผู้บริโภคเชื่อใจ เพื่อปั้น LLM ให้เป็นสุดยอดผู้เชี่ยวชาญประจำบ้าน</p>
+                    
+                    <div class="data-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">80.4<span style="color:var(--cyber-cyan)">%</span></span>
+                            <span class="metric-label">Trust in Hybrid Expertise</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">6<span style="color:var(--cyber-cyan)">+</span></span>
+                            <span class="metric-label">Data Channels Merged</span>
+                        </div>
+                    </div>
+
                     <div class="card-actions">
-                        <button class="btn btn-like" onclick="handleLike('liv', this)">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            ถูกใจ (<span class="like-count">24</span>)
+                        <button class="btn-icon" onclick="toggleLike('liv', this)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span class="like-cnt">3.1K</span>
                         </button>
-                        <div class="action-group">
-                            <button class="btn btn-secondary" onclick="openPdf('LIV.pdf', '04 | LIV - Home LLM Touchpoint Framework')">Preview</button>
-                            <a href="LIV.pdf" download class="btn btn-primary">Download PDF</a>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-secondary" onclick="openPdf('LIV.pdf', 'SYSTEM_04: LIV LLM')">PREVIEW</button>
+                            <a href="LIV.pdf" download class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Elegant Feedback Survey Segment -->
-            <section class="survey-section">
-                <h3 class="survey-title">Design Research Hub Survey</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 32px;">ร่วมเป็นส่วนหนึ่งในการขับเคลื่อนคุณภาพข้อมูลวิจัย โดยส่งความคิดเห็นสั้นๆ แก่ทีมพัฒนา</p>
+            <!-- Terminal Style Feedback Form -->
+            <section class="terminal-survey">
+                <div class="terminal-header">
+                    <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+                </div>
+                <h3 style="font-family: var(--font-en); font-size: 24px; margin-bottom: 30px; letter-spacing: 1px;">> INITIATE_DATA_COLLECTION_PROTOCOL</h3>
                 
-                <form id="feedbackForm" onsubmit="submitForm(event)">
-                    <!-- Question 1 -->
-                    <div class="form-group">
-                        <label class="form-label">คำถามที่ 1: ข้อมูลหรือหัวข้องานวิจัยชิ้นใดในคลังนี้ ที่คุณมองว่าสามารถนำไปปรับใช้หรือสร้างประโยชน์แก่โครงการปัจจุบันของคุณได้มากที่สุด?</label>
-                        <label class="radio-option">
-                            01 | SARA - โมเดลการทรานส์ฟอร์มแอปพลิเคชันสู่ AI Learning Companion
-                            <input type="radio" name="research_q1" value="SARA" required>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-option">
-                            02 | RM Worklog - แนวคิดทลายปม Frictionless UX เพื่อเพิ่มประสิทธิภาพเครื่องมือภายในองค์กร
-                            <input type="radio" name="research_q1" value="RM Worklog">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-option">
-                            03 | WeShape - รายงาน Competitive UX และโอกาสทลาย Reality Gap ในอุตสาหกรรม PropTech
-                            <input type="radio" name="research_q1" value="WeShape">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-option">
-                            04 | LIV - กรอบโครงสร้างโมเดลความรู้เรื่องที่อยู่อาศัยแบบครบวงจรผ่านเทคโนโลยี GenAI / LLM
-                            <input type="radio" name="research_q1" value="LIV">
-                            <span class="checkmark"></span>
-                        </label>
+                <form id="cyberForm" onsubmit="transmitData(event)">
+                    <!-- Q1 -->
+                    <div style="margin-bottom: 40px;">
+                        <p class="survey-q">[Q1] นวัตกรรมใดจากคลังข้อมูลนี้ มีศักยภาพสูงสุดในการเชื่อมต่อกับ Product Roadmap ของคุณ?</p>
+                        <label class="cyber-radio"><input type="radio" name="tech_focus" required><span>SARA - AI Ecosystem Integration</span></label>
+                        <label class="cyber-radio"><input type="radio" name="tech_focus"><span>RM Worklog - Enterprise UX Optimization</span></label>
+                        <label class="cyber-radio"><input type="radio" name="tech_focus"><span>WeShape - Spatial Computing & AR</span></label>
+                        <label class="cyber-radio"><input type="radio" name="tech_focus"><span>LIV - LLM & Generative AI</span></label>
                     </div>
 
-                    <!-- Question 2 -->
-                    <div class="form-group">
-                        <label class="form-label">คำถามที่ 2: คะแนนความพึงพอใจต่อระดับความลึกซึ้งของอินไซต์ (Insight Depth) และความชัดเจนของคำแนะนำเชิงกลยุทธ์ภายในคลังข้อมูลนี้</label>
-                        <div class="rating-stars" id="stars-container">
-                            <span class="star" onclick="assignStar(1)">★</span>
-                            <span class="star" onclick="assignStar(2)">★</span>
-                            <span class="star" onclick="assignStar(3)">★</span>
-                            <span class="star" onclick="assignStar(4)">★</span>
-                            <span class="star" onclick="assignStar(5)">★</span>
+                    <!-- Q2 -->
+                    <div style="margin-bottom: 40px;">
+                        <p class="survey-q">[Q2] ประเมินระดับความคมชัดของ Insight & Strategic Action (1-5)</p>
+                        <div class="rating-stars" id="cyber-stars" style="color: var(--text-dim); font-size: 40px;">
+                            <span class="star" onclick="setCyberStar(1)" style="cursor: pointer;">★</span>
+                            <span class="star" onclick="setCyberStar(2)" style="cursor: pointer;">★</span>
+                            <span class="star" onclick="setCyberStar(3)" style="cursor: pointer;">★</span>
+                            <span class="star" onclick="setCyberStar(4)" style="cursor: pointer;">★</span>
+                            <span class="star" onclick="setCyberStar(5)" style="cursor: pointer;">★</span>
                         </div>
-                        <input type="hidden" id="form_rating" value="0" required>
+                        <input type="hidden" id="cyber_rate" value="0">
                     </div>
 
-                    <!-- Question 3 -->
-                    <div class="form-group">
-                        <label class="form-label">คำถามที่ 3: ระบุหัวข้อ เมกะเทรนด์ดิจิทัล หรือพฤติกรรมผู้บริโภคเฉพาะกลุ่มที่คุณต้องการให้ทีมดีไซน์มุ่งเน้นทำวิจัยในลำดับถัดไป</label>
-                        <textarea class="form-control" rows="4" placeholder="พิมพ์ข้อเสนอแนะหรือหัวข้อวิจัยที่คุณต้องการค้นพบ..." required></textarea>
+                    <!-- Q3 -->
+                    <div style="margin-bottom: 40px;">
+                        <p class="survey-q">[Q3] ระบุ Target Segment หรือ Mega Trend ที่ระบบควรทำการสแกนและวิจัยใน Phase ถัดไป:</p>
+                        <textarea class="cyber-input" rows="3" placeholder="Enter keywords or parameters here... (e.g. Silver Economy, FinTech UI)" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="border-radius: 99px; padding: 14px 40px;">ส่งแบบสำรวจความคิดเห็น</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">TRANSMIT_DATA()</button>
                 </form>
             </section>
         </main>
     </div>
 
-    <!-- PREVIEW OVERLAY FRAME MODAL -->
-    <div class="modal" id="preview-modal">
+    <!-- HUD PDF Viewer Modal -->
+    <div class="modal" id="pdf-hud">
         <div class="modal-container">
             <div class="modal-header">
-                <div class="modal-title" id="preview-modal-title">เอกสารสรุปงานวิจัย</div>
-                <button class="modal-close" onclick="closePdf()">&times;</button>
+                <span id="hud-title">> SECURE_DOCUMENT_VIEWER</span>
+                <button class="modal-close" onclick="closePdf()">×</button>
             </div>
             <div class="modal-body">
-                <iframe class="pdf-viewer" id="preview-iframe" src="" title="PDF Viewer Frame"></iframe>
+                <iframe class="pdf-viewer" id="hud-iframe" src=""></iframe>
             </div>
         </div>
     </div>
 
-    <!-- UI TOAST MANAGER -->
-    <div class="toast" id="ui-toast">
-        <span class="toast-icon">✓</span>
-        <span id="toast-txt">ดำเนินการเรียบร้อยแล้ว</span>
-    </div>
-
-    <!-- PREMIUM HUB CORE CONTROLLER SCRIPT -->
+    <!-- JS Logic -->
     <script>
-        // System Switcher: Entering Platform
-        function enterPlatform() {
+        function enterExpo() {
             document.getElementById('welcome-screen').classList.add('hidden');
-            const mainContent = document.getElementById('main-content');
-            mainContent.classList.add('visible');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            displayToast("ยินดีต้อนรับเข้าสู่ระบบคลังข้อมูลอินไซต์");
+            document.getElementById('main-content').classList.add('visible');
+            window.scrollTo(0,0);
         }
 
-        // NEW FEATURE: Exit platform back to premium landing welcome view smoothly
-        function exitToLanding() {
+        function exitExpo() {
             document.getElementById('main-content').classList.remove('visible');
             document.getElementById('welcome-screen').classList.remove('hidden');
-            displayToast("กลับสู่หน้าหลักต้อนรับแล้ว");
         }
 
-        // Modals Management System
         function openPdf(file, title) {
-            document.getElementById('preview-modal-title').textContent = title;
-            document.getElementById('preview-iframe').src = file;
-            document.getElementById('preview-modal').classList.add('active');
+            document.getElementById('hud-title').innerText = "> " + title;
+            document.getElementById('hud-iframe').src = file;
+            document.getElementById('pdf-hud').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closePdf() {
-            document.getElementById('preview-modal').classList.remove('active');
-            document.getElementById('preview-iframe').src = '';
+            document.getElementById('pdf-hud').classList.remove('active');
+            document.getElementById('hud-iframe').src = '';
             document.body.style.overflow = 'auto';
         }
 
-        // State Store for Likes Interaction
-        const likeTracking = { sara: false, rm: false, weshape: false, liv: false };
-        function handleLike(key, element) {
-            const label = element.querySelector('.like-count');
-            let total = parseInt(label.textContent, 10);
-            if (!likeTracking[key]) {
-                likeTracking[key] = true;
-                element.classList.add('liked');
-                label.textContent = total + 1;
-                displayToast("เพิ่มผลงานวิจัยนี้เข้ารายการที่คุณถูกใจสำเร็จ");
-            } else {
-                likeTracking[key] = false;
-                element.classList.remove('liked');
-                label.textContent = total - 1;
-            }
+        function toggleLike(key, btn) {
+            btn.classList.toggle('liked');
+            // Simplified micro-interaction for CES vibe
         }
 
-        // Survey Feedback Core Functions
-        function assignStar(value) {
-            document.getElementById('form_rating').value = value;
-            const collection = document.querySelectorAll('#stars-container .star');
-            collection.forEach((star, index) => {
-                if (index < value) {
-                    star.classList.add('selected');
-                } else {
-                    star.classList.remove('selected');
-                }
+        function setCyberStar(val) {
+            document.getElementById('cyber_rate').value = val;
+            const stars = document.querySelectorAll('#cyber-stars .star');
+            stars.forEach((s, i) => {
+                s.style.color = i < val ? 'var(--cyber-cyan)' : 'var(--text-dim)';
+                s.style.textShadow = i < val ? '0 0 15px rgba(0,229,255,0.5)' : 'none';
             });
         }
 
-        function submitForm(event) {
-            event.preventDefault();
-            if (document.getElementById('form_rating').value === "0") {
-                alert("กรุณาเลือกให้คะแนนความพึงพอใจในคำถามที่ 2");
+        function transmitData(e) {
+            e.preventDefault();
+            if (document.getElementById('cyber_rate').value === "0") {
+                alert("ERROR: INSIGHT_RATING_MISSING. Please provide a rating.");
                 return;
             }
-            displayToast("ขอบคุณสําหรับข้อคิดเห็น ทีมดีไซน์ได้รับข้อมูลเรียบร้อยแล้ว!");
-            event.target.reset();
-            assignStar(0);
-        }
-
-        // Dynamic Toast Notification Presenter
-        function displayToast(text) {
-            const container = document.getElementById('ui-toast');
-            document.getElementById('toast-txt').textContent = text;
-            container.classList.add('show');
+            const btn = e.target.querySelector('button');
+            btn.innerText = "TRANSMITTING...";
             setTimeout(() => {
-                container.classList.remove('show');
-            }, 3500);
+                btn.innerText = "DATA_RECEIVED! THANK YOU.";
+                btn.style.background = "var(--cyber-cyan)";
+                btn.style.color = "#000";
+                setTimeout(() => {
+                    e.target.reset(); setCyberStar(0);
+                    btn.innerText = "TRANSMIT_DATA()";
+                    btn.style.background = ""; btn.style.color = "";
+                }, 3000);
+            }, 1500);
         }
 
-        // Natural Keyboard Listener (ESC key exits preview overlay)
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closePdf();
-            }
-        });
+        window.addEventListener('keydown', e => { if(e.key === 'Escape') closePdf(); });
     </script>
 </body>
 </html>
